@@ -1,0 +1,174 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    padding: 56px 0;
+    height: 100%;
+}
+
+.row {
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+/* Nav and Search Section */
+
+nav {
+    height: 100px;
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#navAndSearch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 24px;
+    height: 25vh;
+    background-color: #888888;
+}
+
+.nav__img--wrapper {
+    height: 50%;
+}
+
+.nav__img {
+    height: 100%;
+}
+
+.nav__link {
+    margin-right: 16px;
+    text-decoration: none;
+    color: white;
+}
+
+.search__title {
+    font-size: 48px;
+    margin-bottom: 16px;
+    color: white;
+}
+
+.search__bar {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 9999px;
+}
+
+.search__bar--input {
+    width: 90%;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    margin-left: 8px;
+    padding: 0 8px;
+}
+
+.search__bar--img {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.fa-magnifying-glass {
+    transform: scale(1.5);
+}
+
+
+
+/* Search Results section */
+
+#results {
+    min-height: 75vh;
+}
+
+.results__list {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 32px;
+    justify-content: center;
+
+}
+
+.results__header {
+    font-size: 32px;
+}
+
+.media {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border: 2px solid lightgray;
+    margin-right: 48px;
+    border-radius: 8px;
+}
+
+.media__poster {
+    width: 100%;
+}
+
+.media__poster--wrapper {
+    position: relative;
+    width: 100%;
+    top: 0;
+}
+
+.media__title {
+    margin-top: 16px;
+    text-align: center;
+}
+
+.media__type {
+    margin: 12px 0;
+}
+
+.results__img--wrapper {
+    width: 400px;
+    height: 400px;
+}
+
+.results__img {
+    width: 400px;
+    height: 400px;
+}
+
+.no-results {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.hide-no-results .no-results{
+    display: none;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 200px;
+}
+
+.fa-spinner {
+    transform: scale(5);
+    color: #888888;
+}

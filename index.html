@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OMDB</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./index.js" defer></script>
+    <script src="https://kit.fontawesome.com/36d09148ab.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <section id="navAndSearch">
+        <nav>
+            <figure class="nav__img--wrapper">
+                <img class="nav__img" src="./assets/omdb-logo.png" alt="">
+            </figure>
+            <div class="nav__links">
+                <a class="nav__link" href="">Home</a>
+                <a class="nav__link" href="">Find Your Movie</a>
+                <a class="nav__link" href="">Contact</a>
+            </div>
+        </nav>
+        <div class="search--wrapper">
+            <h2 class="search__title">Search Our Media</h2>
+            <div class="search__bar">
+                <input class="search__bar--input" placeholder="Search For Media By Title" onchange="searchMedia(event)" type="text"></input>
+                <div class="search__bar--img" src="" alt="">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="results">
+        <div class="container">
+            <div class="row">
+                <h3 class="results__header">Search results:</h3>
+                <div class="results__list">
+                    
+                </div>
+
+                <!-- 
+                    <div class="no-results">
+                        <figure class="results__img--wrapper">
+                            <img class="results__img" src="./assets/search-img.jpg" alt="">
+                        </figure>
+                        <h2 class="no-results__title">Adjust the Search Criteria to Find Media</h2>
+                        <p class="no-results__sub-title">Please use the search bar and filters above</p>
+                    </div>
+                    -->
+                <div class="loading">
+                        <i class="fa-solid fa-spinner"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
