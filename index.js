@@ -1,50 +1,68 @@
-async function main() {
-    showMovies();
+
+//Remove previous results, show loading state, search for media based on current search and filter
+function searchMedia() {
+    const resultListHtml = document.querySelector('.results__list');
+    resultListHtml.innerHTML = '';
+    document.body.classList += ' show-loading';
+    document.body.classList += ' hide-no-results';
+    showMedia();
 }
 
-function searchMedia(event) {
-    showMedia(event.target.value);
+function getSearchValue() {
+    return document.querySelector('.search__bar--input').value;
 }
 
+function getMediaFilter() {
+    const mediaFilter = document.querySelector('#media-filter').value;
 
-/* 
+    if (mediaFilter === 'all')
+        return ''
+    
+    else
+        return `&type=${mediaFilter}`
+}
 
-<div class="media">
-                        <figure class="media__poster--wrapper">
-                            <img class="media__poster" src="https://m.media-amazon.com/images/M/MV5BNzlkNzVjMDMtOTdhZC00MGE1LTkxODctMzFmMjkwZmMxZjFhXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg" alt="">
-                        </figure>
-                        <h2 class="media__title">The Fast and the Furious</h2>
-                        <p class="media__type">Media Type: movie</p>
-                        <p class="media__year">Released: 2001</p>
-                    </div>
-                    
-*/
-async function showMedia(search) {
-    document.body.classList += ' hide-no-results'
-    //show loading state
+function getReleaseFilter() {
+    //Slice is needed for media that has a range in release field. For example, 2005-2014
+    return document.querySelector('#yearFilter').value.slice(0,4);
+}
 
+async function showMedia() {
+    //Get filter and search values
+    const search = getSearchValue();
+    const mediaFilter = getMediaFilter();
+    const releaseYear = getReleaseFilter();
 
-
-    const movies = await fetch(`https://www.omdbapi.com/?apikey=725681c5&s=${search}`);
+    const movies = await fetch(`https://www.omdbapi.com/?apikey=725681c5&s=${search}${mediaFilter}`);
     const moviesData = await movies.json();
-    const resultListHtml = document.querySelector('.results__list')
+    
+    const resultListHtml = document.querySelector('.results__list');
 
     //Search was successful, show results
     if (moviesData.Response === 'True') {
-        //remove loading state
 
-        const moviesHtml = moviesData.Search.map((media) => getMediaHtml(media))
-        
+        let filteredMovies = filterMovies(moviesData.Search, releaseYear);
+        const moviesHtml = filteredMovies.map((media) => getMediaHtml(media));
+        document.body.classList.remove('show-loading');
         resultListHtml.innerHTML = moviesHtml.slice(0,6).join('');
     }
 
     //Search found nothing, show no-results image 
     else {
-        //remove loading state and show no-results
-
-        resultListHtml.innerHTML = '';
+        
+        document.body.classList.remove('show-loading');
         document.body.classList.remove('hide-no-results');
+
     }
+}
+
+//If year filter is given, filter. Otherwise, return original list
+function filterMovies(movies, releaseYear) {
+    if (releaseYear){
+        return movies.filter((movie) => movie.Year >= releaseYear);
+    }
+
+    return movies;
 }
 
 function getMediaHtml(media) {

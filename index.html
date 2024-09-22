@@ -25,7 +25,8 @@
         <div class="search--wrapper">
             <h2 class="search__title">Search Our Media</h2>
             <div class="search__bar">
-                <input class="search__bar--input" placeholder="Search For Media By Title" onchange="searchMedia(event)" type="text"></input>
+                <input class="search__bar--input" placeholder="Search For Media By Title" onchange="searchMedia(event)"
+                    type="text"></input>
                 <div class="search__bar--img" src="" alt="">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
@@ -36,22 +37,37 @@
     <section id="results">
         <div class="container">
             <div class="row">
+                <div class="filters">
+                    <div class="filters__media-type filter__container">
+                        <h2 class="filter__header">Show Media Type</h2>
+                        <select name="media-filter" id="media-filter" onchange="searchMedia()">
+                            <option value="all">All</option>
+                            <option value="movie">Movie</option>
+                            <option value="series">Series</option>
+                            <option value="episode">Episode</option>
+                          </select>
+                    </div>
+                    <div class="filters__year filter__container">
+                        <h2 class="filter__header">Show Media Released After Year</h2>
+                            <input id="yearFilter" type="number" placeholder="Enter Year" onchange="searchMedia()"/>
+                    </div>
+                </div>
                 <h3 class="results__header">Search results:</h3>
                 <div class="results__list">
-                    
+
                 </div>
 
-                <!-- 
-                    <div class="no-results">
-                        <figure class="results__img--wrapper">
-                            <img class="results__img" src="./assets/search-img.jpg" alt="">
-                        </figure>
-                        <h2 class="no-results__title">Adjust the Search Criteria to Find Media</h2>
-                        <p class="no-results__sub-title">Please use the search bar and filters above</p>
-                    </div>
-                    -->
+
+                <div class="no-results">
+                    <figure class="results__img--wrapper">
+                        <img class="results__img" src="./assets/search-img.jpg" alt="">
+                    </figure>
+                    <h2 class="no-results__title">Adjust the Search Criteria to Find Media</h2>
+                    <p class="no-results__sub-title">Please use the search bar and filters above</p>
+                </div>
+
                 <div class="loading">
-                        <i class="fa-solid fa-spinner"></i>
+                    <i class="fa-solid fa-spinner fa-5x spinning-effect"></i>
                 </div>
             </div>
         </div>
