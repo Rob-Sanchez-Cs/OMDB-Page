@@ -1,4 +1,3 @@
-
 //Remove previous results, show loading state, search for media based on current search and filter
 function searchMedia() {
     const resultListHtml = document.querySelector('.results__list');
@@ -17,14 +16,14 @@ function getMediaFilter() {
 
     if (mediaFilter === 'all')
         return ''
-    
+
     else
         return `&type=${mediaFilter}`
 }
 
 function getReleaseFilter() {
     //Slice is needed for media that has a range in release field. For example, 2005-2014
-    return document.querySelector('#yearFilter').value.slice(0,4);
+    return document.querySelector('#yearFilter').value.slice(0, 4);
 }
 
 async function showMedia() {
@@ -35,7 +34,7 @@ async function showMedia() {
 
     const movies = await fetch(`https://www.omdbapi.com/?apikey=725681c5&s=${search}${mediaFilter}`);
     const moviesData = await movies.json();
-    
+
     const resultListHtml = document.querySelector('.results__list');
 
     //Search was successful, show results
@@ -44,12 +43,12 @@ async function showMedia() {
         let filteredMovies = filterMovies(moviesData.Search, releaseYear);
         const moviesHtml = filteredMovies.map((media) => getMediaHtml(media));
         document.body.classList.remove('show-loading');
-        resultListHtml.innerHTML = moviesHtml.slice(0,6).join('');
+        resultListHtml.innerHTML = moviesHtml.slice(0, 6).join('');
     }
 
     //Search found nothing, show no-results image 
     else {
-        
+
         document.body.classList.remove('show-loading');
         document.body.classList.remove('hide-no-results');
 
@@ -58,7 +57,7 @@ async function showMedia() {
 
 //If year filter is given, filter. Otherwise, return original list
 function filterMovies(movies, releaseYear) {
-    if (releaseYear){
+    if (releaseYear) {
         return movies.filter((movie) => movie.Year >= releaseYear);
     }
 
@@ -76,6 +75,14 @@ function getMediaHtml(media) {
             </div>`
 }
 
-function capitalizeFirstLetter(string){
+function openMenu() {
+    document.body.classList += ' show-burger-menu';
+}
+
+function closeMenu() {
+    document.body.classList.remove('show-burger-menu');
+}
+
+function capitalizeFirstLetter(string) {
     return string[0].toUpperCase() + string.slice(1,);
 }

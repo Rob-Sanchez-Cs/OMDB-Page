@@ -21,12 +21,30 @@
                 <a class="nav__link" href="">Find Your Movie</a>
                 <a class="nav__link" href="">Contact</a>
             </div>
+            <button class="nav__button--wrapper" onclick="openMenu()">
+                <svg xmlns="http://www.w3.org/2000/svg" class="nav__button" width="24" height="24" viewBox="0 0 24 24"
+                     fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
         </nav>
+        <div class="burger__menu">
+            <ul class="burger__menu--list">
+                <li class="burger__list--item"><a class="burger__list--text" href="#">Home</a></li>
+                <li class="burger__list--item"><a class="burger__list--text" href="#">Find Your Movie</a></li>
+                <li class="burger__list--item"><a class="burger__list--text" href="#">Contact</a></li>
+            </ul>
+            <button class="burger__button" onclick="closeMenu()">
+                <i class="fa-solid fa-x fa-2x"></i>
+            </button>
+        </div>
         <div class="search--wrapper">
             <h2 class="search__title">Search Our Media</h2>
             <div class="search__bar">
                 <input class="search__bar--input" placeholder="Search For Media By Title" onchange="searchMedia(event)"
-                    type="text"></input>
+                       type="text"></input>
                 <div class="search__bar--img" src="" alt="">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
@@ -45,11 +63,11 @@
                             <option value="movie">Movie</option>
                             <option value="series">Series</option>
                             <option value="episode">Episode</option>
-                          </select>
+                        </select>
                     </div>
                     <div class="filters__year filter__container">
                         <h2 class="filter__header">Show Media Released After Year</h2>
-                            <input id="yearFilter" type="number" placeholder="Enter Year" onchange="searchMedia()"/>
+                        <input id="yearFilter" type="number" placeholder="Enter Year" onchange="searchMedia()" />
                     </div>
                 </div>
                 <h3 class="results__header">Search results:</h3>

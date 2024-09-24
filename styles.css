@@ -17,8 +17,61 @@
     padding: 0 48px;
 }
 
-/* Nav and Search Section */
+/* Burger Menu */
 
+.burger__menu {
+    width: 80%;
+    height: 50%;
+    background-color: white;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+    border: 2px solid black;
+    border-radius: 8px;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: all 600ms ease;
+}
+
+.show-burger-menu .burger__menu {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.burger__menu--list {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.burger__list--item {
+    list-style-type: none;
+}
+
+.burger__list--text {
+    color: black;
+    text-decoration: none;
+    font-size: 24px;
+}
+
+.burger__button {
+    position: absolute;
+    border: none;
+    right: 40px;
+    top: 25px;
+    cursor: pointer;
+}
+
+.fa-2x {
+    background-color: white;
+    
+}
+
+/* Nav and Search Section */
 nav {
     height: 100px;
     width: 100%;
@@ -27,6 +80,16 @@ nav {
     justify-content: space-between;
     align-items: center;
 }
+
+.nav__button--wrapper {
+    position: absolute;
+    right: 10%;
+    background-color: rgb(136, 136, 136);
+    border: none;
+    cursor: pointer;
+    display: none;
+}
+
 
 #navAndSearch {
     display: flex;
@@ -102,6 +165,8 @@ nav {
     padding-top: 8px;
 }
 
+
+
 .filter__type {
     margin-bottom: 8px;
 }
@@ -119,7 +184,6 @@ nav {
     flex-wrap: wrap;
     padding-top: 32px;
     justify-content: center;
-
 }
 
 .results__header {
@@ -177,9 +241,9 @@ nav {
     margin: 0 auto;
 }
 
-.hide-no-results .no-results{
+.hide-no-results .no-results {
     display: none;
-} 
+}
 
 .loading {
     display: none;
@@ -210,4 +274,47 @@ nav {
 
 .filters {
     width: 100%;
+}
+
+@media (max-width: 768px) {
+    .nav__links {
+        display: none;
+    }
+
+    .nav__button--wrapper {
+        display: flex;
+    }
+
+    .search__title {
+        font-size: 36px;
+    }
+
+    .filter__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 16px;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+    .filters {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    
+
+    .results__header {
+        text-align: center;
+    }
+
+    .media {
+        width: 60%;
+        margin-right: 0;
+        margin-bottom: 48px;
+    }
 }
